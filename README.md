@@ -5,6 +5,8 @@
 
 [备注2：flutter工程下的build文件夹中的ios文件夹中存在了flutter的编译缓存，如果发现编译时不及时，可以将build -> ios这个文件夹的内容删除掉，让flutter的编译器重新确认编译环境并重新编译。]
 
+[备注3：配置好DartDefines.sh脚本后，工程中都可以采用 $(key_name) 的形式来动态通过flutter配置相关的信息，其中包括包名、bundle id、版本号、系统权限弹窗的文案等，具体可根据需求调整。]
+
 ### 1、iOS工程中，在默认的Runner这个target的基础上，copy多个渠道的target。
 
 ![Image text](https://github.com/huangsongyao/image-storages/blob/master/image-storages/1.png)
