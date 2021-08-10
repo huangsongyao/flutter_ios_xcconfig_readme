@@ -7,7 +7,9 @@
 
 ### 1、iOS工程中，在默认的Runner这个target的基础上，copy多个渠道的target。
 
-
+[!Image text](https://github.com/huangsongyao/image-storages/blob/master/image-storages/1.png)
+[!Image text](https://github.com/huangsongyao/image-storages/blob/master/image-storages/2.png)
+[!Image text](https://github.com/huangsongyao/image-storages/blob/master/image-storages/3.png)
 
 ### 2、创建多个渠道的.xcconfig文件，作为target渠道绑定标志的scheme对象，每个渠道均有：-debug、 -release、 -profile三个编译环境的配置。注意，这里的.xcconfig文件的本地绝对路径必须和自动生成的【Generated.xcconfig】文件保持同样的路径。
 
