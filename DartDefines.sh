@@ -13,7 +13,14 @@
 
 echo '开始执行编译前脚本: DartDefines.sh ......\n'
 IFS=',' read -r -a define_items <<< "$DART_DEFINES"
-echo '--dart-defines原始参数参数define_items:'$define_items'\n'
+echo '--dart-defines原始参数define_items:'$define_items'\n'
+len=${#define_items[*]}
+if [[ len -eq 0 ]]; then
+	#如果数组长度为0，则直接退出脚本
+	echo '--dart-defines原始参数未获取成功！'
+	exit
+fi
+
 for index in "${!define_items[@]}"
 do
 	decode_base64=$(printf "%s" ${define_items[$index]}| base64 -d)
