@@ -21,15 +21,23 @@ if [[ len -eq 0 ]]; then
 	exit
 fi
 
+dart_defines_pre="PRE_DART_DEFINES"
+
 for index in "${!define_items[@]}"
 do
 	decode_base64=$(printf "%s" ${define_items[$index]}| base64 -d)
-    define_items[$index]=$decode_base64
-    echo 'base64解码index:'$index'----------base64解码结果:'$decode_base64
+	echo 'base64解码index:'$index'----------base64解码结果:'$decode_base64
+	if [[ $decode_base64 != *$dart_defines_pre* ]]; then
+		#解码后，如果不含有"PRE_DART_DEFINES"的项不写入到文件中
+		decode_base64=""
+	fi
+    	define_items[$index]=$decode_base64
 done
 
 printf "%s\n" "${define_items[@]}" > ${SRCROOT}/Flutter/DartDefines.xcconfig
 echo '--dart-defines参数解码完毕!'
+
+exit
 
 
 
